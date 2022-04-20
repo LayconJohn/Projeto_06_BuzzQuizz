@@ -1,8 +1,5 @@
 function renderizarMensagemTela1() {
-    document.querySelector(".tela1").innerHTML = `
-    <header class="topo">
-        <h1>BuzzQuiz</h1>
-    </header>
+    document.querySelector(".tela1").innerHTML += `
   <main>
     <section class="meu-quizz">
       <div class="quizz-vazio ">
