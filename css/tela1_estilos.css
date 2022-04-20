@@ -117,25 +117,22 @@ section {
   padding-bottom: 100px;
 }
 
+.simpsons {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://s3-alpha-sig.figma.com/img/0944/77cf/673132f4da1ae224b665fd9dfeffb556?Expires=1651449600&Signature=I5DQl~unwCWPWx31SKX6m3M6oCZhdCol9vC6VArPFKH62pKoQ1FC65y9Dvt5ruYbkAkN-0Q83TzRGmP3ryovOr9vpV-fv8fjsf7wsyDld6lLDpzlmUlaPISp3Ku3wcw-kad-0t~FPUoA0JtRSYlLqB1m2I1BL4qf1WyFDihxXmQIveBtzt2sUsPe98rdUnA-G0yPexB~L1R0~FXtO~UoKqjB3McQFPahoEooAli~HtnYYINLeqAzw7uvUiW9egIU3v3MFYEu7qGxSsn6kjfPcoJKvKBWn3pS9penfZ2xPrfEPLxCVrTKvJpB6gvk6EuL2arG3IVgCJOR189Ub3CTKg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA');
+}
+
+.de-boas {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://s3-alpha-sig.figma.com/img/64d4/7d80/ee972fbf4fbabdbfebb6bcf202204d48?Expires=1651449600&Signature=UCyqea9GcgXLm-xjmqLEx34JXlZmUG7iq-stATXPXPwRpgIgGrB3obm09~XIzfKofvbGK2Cl~DJ25nB7DPaetPzbuu2I9-aF9wfbU2MXggCXPAJg1FbxA32KTf-HUIZOuSrFpwc~yc~TSjDa5-~97QifgVFp8buxH75jWQ9opVIiNxTFW9nh9u5XXk3jAKI0KbfixmEe7hkZ5BBAZzwj5mbmTifbEEOfWpHktiJBqpDyqjp8CzGLpAiJDZBWEKd5JOzJy2BrXqij502nebBFeKkUWxf11R0KiVAaW2Zy5X~5NDYx5tDAnV3SGVgVFEKe9tGTGPMica2Xh6KLQLl2OQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA');
+}
+
 .quizz {
   width: 340px;
   height: 180px;
-  background-image: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(0, 0, 0, 0.5) 64.58%,
-      #000000 100%
-    ),
-    url("https://s3-alpha-sig.figma.com/img/0944/77cf/673132f4da1ae224b665fd9dfeffb556?Expires=1651449600&Signature=I5DQl~unwCWPWx31SKX6m3M6oCZhdCol9vC6VArPFKH62pKoQ1FC65y9Dvt5ruYbkAkN-0Q83TzRGmP3ryovOr9vpV-fv8fjsf7wsyDld6lLDpzlmUlaPISp3Ku3wcw-kad-0t~FPUoA0JtRSYlLqB1m2I1BL4qf1WyFDihxXmQIveBtzt2sUsPe98rdUnA-G0yPexB~L1R0~FXtO~UoKqjB3McQFPahoEooAli~HtnYYINLeqAzw7uvUiW9egIU3v3MFYEu7qGxSsn6kjfPcoJKvKBWn3pS9penfZ2xPrfEPLxCVrTKvJpB6gvk6EuL2arG3IVgCJOR189Ub3CTKg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA");
   position: relative;
   margin: 5px 5px;
-}
-
-.quizz img {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .quizz p {
