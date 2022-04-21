@@ -1,6 +1,8 @@
 const meuQuiz = document.querySelector(".meu-quizz");
 const todosQuizz = document.querySelector(".todos-quizz");
 const tela1 = document.querySelector(".tela1");
+const tela2 = document.querySelector(".tela2");
+const tela3 = document.querySelector(".tela3");
 
 function renderizarMensagemTela1() {
   inserirTela1();
@@ -26,12 +28,12 @@ function inserirMeuQuiz() {
   document.querySelector(".meu-quizz").innerHTML = `
     <div class="quizz-vazio ">
       <p>Você não criou nenhum quiz ainda :(</p>
-      <button>Criar Quizz</button>
+      <button onclick="criarBotao()">Criar Quizz</button>
     </div>
     <div class="quizz-completo oculto">
       <div class="titulo">
         <h3>Seus Quizzes</h3>
-        <ion-icon name="add-circle"></ion-icon>
+        <ion-icon name="add-circle" onclick="criarBotao()"></ion-icon>
       </div>
       <div class="quizzes">
         <div class="quizz simpsons">
@@ -87,5 +89,10 @@ function inserirTodosQuizz() {
   `
 }
 
-//renderizarMensagemTela1();
+function criarBotao() {
+  tela1.classList.add("oculto");
+  tela3.classList.remove("oculto");
+}
+
+renderizarMensagemTela1();
 
