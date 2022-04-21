@@ -87,5 +87,5 @@ function inserirTodosQuizz() {
   `
 }
 
-renderizarMensagemTela1();
+//renderizarMensagemTela1();
 
