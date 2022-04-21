@@ -55,32 +55,32 @@ function inserirTodosQuizz() {
   document.querySelector(".todos-quizz").innerHTML += `
     <h3>Todos os Quizzes</h3>
     <div class="quizzes">
-      <div class="quizz simpsons">
+      <div class="quizz simpsons" onclick="selecionar(this)">
         <p>
           Acerte os personagens corretos dos Simpsons e prove seu amor!
         </p>
       </div>
-      <div class="quizz de-boas">
+      <div class="quizz de-boas" onclick="selecionar(this)">
         <p>
           O quanto você é de boas?
         </p>
       </div>
-      <div class="quizz simpsons">
+      <div class="quizz simpsons" onclick="selecionar(this)">
         <p>
           Acerte os personagens corretos dos Simpsons e prove seu amor!
         </p>
       </div>
-      <div class="quizz de-boas">
+      <div class="quizz de-boas" onclick="selecionar(this)">
         <p>
           O quanto você é de boas?
         </p>
       </div>
-      <div class="quizz simpsons">
+      <div class="quizz simpsons" onclick="selecionar(this)">
         <p>
           Acerte os personagens corretos dos Simpsons e prove seu amor!
         </p>
       </div>
-      <div class="quizz de-boas">
+      <div class="quizz de-boas" onclick="selecionar(this)">
         <p>
           O quanto você é de boas?
         </p>
@@ -92,6 +92,11 @@ function inserirTodosQuizz() {
 function criarBotao() {
   tela1.classList.add("oculto");
   tela3.classList.remove("oculto");
+}
+
+function selecionar(quizz) {
+  tela1.classList.add("oculto");
+  tela2.classList.remove("oculto");
 }
 
 renderizarMensagemTela1();
