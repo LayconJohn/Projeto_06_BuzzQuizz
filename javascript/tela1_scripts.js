@@ -35,13 +35,13 @@ function inserirMeuQuiz() {
         <h3>Seus Quizzes</h3>
         <ion-icon name="add-circle" onclick="criarBotao()"></ion-icon>
       </div>
-      <div class="quizzes">
-        <div class="quizz simpsons">
+      <div class="tela1-quizzes">
+        <div class="tela1-quizz simpsons" onclick="selecionarQuizz(this)">
           <p>
             Acerte os personagens corretos dos Simpsons e prove seu amor!
           </p>
         </div>
-        <div class="quizz de-boas">
+        <div class="tela1-quizz de-boas" onclick="selecionarQuizz(this)">
           <p>
             O quanto você é de boas?
           </p>
@@ -54,33 +54,33 @@ function inserirMeuQuiz() {
 function inserirTodosQuizz() {
   document.querySelector(".todos-quizz").innerHTML += `
     <h3>Todos os Quizzes</h3>
-    <div class="quizzes">
-      <div class="quizz simpsons" onclick="selecionar(this)">
+    <div class="tela1-quizzes">
+      <div class="tela1-quizz simpsons" onclick="selecionarQuizz(this)">
         <p>
           Acerte os personagens corretos dos Simpsons e prove seu amor!
         </p>
       </div>
-      <div class="quizz de-boas" onclick="selecionar(this)">
+      <div class="tela1-quizz de-boas" onclick="selecionarQuizz(this)">
         <p>
           O quanto você é de boas?
         </p>
       </div>
-      <div class="quizz simpsons" onclick="selecionar(this)">
+      <div class="tela1-quizz simpsons" onclick="selecionarQuizz(this)">
         <p>
           Acerte os personagens corretos dos Simpsons e prove seu amor!
         </p>
       </div>
-      <div class="quizz de-boas" onclick="selecionar(this)">
+      <div class="tela1-quizz de-boas" onclick="selecionarQuizz(this)">
         <p>
           O quanto você é de boas?
         </p>
       </div>
-      <div class="quizz simpsons" onclick="selecionar(this)">
+      <div class="tela1-quizz simpsons" onclick="selecionarQuizz(this)">
         <p>
           Acerte os personagens corretos dos Simpsons e prove seu amor!
         </p>
       </div>
-      <div class="quizz de-boas" onclick="selecionar(this)">
+      <div class="tela1-quizz de-boas" onclick="selecionarQuizz(this)">
         <p>
           O quanto você é de boas?
         </p>
@@ -94,7 +94,7 @@ function criarBotao() {
   tela3.classList.remove("oculto");
 }
 
-function selecionar(quizz) {
+function selecionarQuizz(quizz) {
   tela1.classList.add("oculto");
   tela2.classList.remove("oculto");
 }

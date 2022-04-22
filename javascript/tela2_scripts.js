@@ -2,7 +2,7 @@ function inserirTela2 () {
     document.querySelector(".tela2").innerHTML += `
     <!-- inicio parte de cima pagina -->
     <div class="topbar">
-      <h1>BuzzQuizz</h1>
+      <h1 class="tela2-h1">BuzzQuizz</h1>
     </div>
     <div class="banner">
         <div class="titulo">
@@ -13,7 +13,7 @@ function inserirTela2 () {
 
     <!-- inicio parte de baixo pagina -->
     <div class="pagina">
-        <div class="container">
+        <div class="tela2-container">
             <div class="cabecalho">
                 <p class="estilo1">Em qual animal Olho-Tonto Moody transfigurou Malfoy?</p>
             </div>
@@ -38,7 +38,7 @@ function inserirTela2 () {
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="tela2-container">
             <div class="cabecalho2">
                 <p class="estilo1">Qual dos objetos abaixo NÃO é uma horcrux?</p>
             </div>
@@ -63,7 +63,7 @@ function inserirTela2 () {
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="tela2-container">
             <div class="cabecalho3">
                 <p class="estilo1">88% de acerto: Você é praticamente um aluno de Hogwarts!</p>
             </div>
