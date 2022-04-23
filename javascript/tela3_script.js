@@ -1,3 +1,5 @@
+
+
 function InserirTela3 (){
     const tela3 = document.querySelector(".tela3")
         tela3.innerHTML = `<header>BuzzQuizz</header>
@@ -17,36 +19,9 @@ function InserirTela3 (){
         <!-- PARTE 2 -->
         <div id="perguntas" class="questionario oculto">
             <h1>Crie suas perguntas</h1>
-            <div class="container">
-                <div class="topicos">Pergunta 1<img class="icon"src="imagens/edit.svg"></div>
-                <input class="marginb"placeholder="Texto da pergunta"></input>
-                <input placeholder="Cor de fundo da pergunta"></input>
-                <div class="topicos">Resposta Correta</div>
-                <input class="marginb" placeholder="Resposta correta"></input>
-                <input placeholder="URL da imagem"></input>
-                <div class="topicos">Resposta Correta</div>
-                <input class="marginb" placeholder="Resposta incorreta 1"></input>
-                <input class="marginb " placeholder="URL da imagem 1"></input>
-                <input class="marginb margint" placeholder="Resposta incorreta 2"></input>
-                <input  class="marginb" placeholder="URL da imagem 2"></input>
-                </div>
-
-            <div class="container">
-                <div class="topicos margint">Pergunta 2 <img class="icon"src="imagens/edit.svg"></div>
-                <div class="caixona">
-                    <input class="marginb"placeholder="Texto da pergunta"></input>
-                    <input placeholder="Cor de fundo da pergunta"></input>
-                    <div class="topicos marginl">Resposta Correta</div>
-                    <input class="marginb" placeholder="Resposta correta"></input>
-                    <input placeholder="URL da imagem"></input>
-                    <div class="topicos marginl">Resposta Correta</div>
-                    <input class="marginb" placeholder="Resposta incorreta 1"></input>
-                    <input class="marginb " placeholder="URL da imagem 1"></input>
-                    <input class="marginb margint" placeholder="Resposta incorreta 2"></input>
-                    <input  class="marginb" placeholder="URL da imagem 2"></input>
-                </div>
+            <div id="bug" class="container">
+            
             </div>
-
             <div class="botao marginb"> <div class="next">Prosseguir pra criar níveis</div></div>
             </div>
         </div>
@@ -60,60 +35,62 @@ function InserirTela3 (){
             <h2>Voltar pra o home</h2>
         </div>
         <!-- PARTE 3 -->`
+        
+        
+        
 }
 InserirTela3 ()
+
 
 function validacaoTela1(){
     let title = document.querySelector(".titleQuizz").value
     let url = document.querySelector(".URLQuizz").value
     let perg = document.querySelector(".pergQuizz").value
-    let nivel = document.querySelector(".nivelQuizz").value
-    
+    let nivel = document.querySelector(".nivelQuizz").value    
     //variavel de padrao da url utilizando Expressões Regulares
     const padrao = /^https?:\/\/.+\/.+$/
     //variavel de padrao da url utilizando Expressões Regulares
     
+    //Arrays de preenchimento dos níveis e perguntas
+    const quantPerguntas=[];
+    const quantniveis=[]
+    //Arrays de preenchimento dos níveis e perguntas
+
     //validação do titulo
     if((title.length >= 20 && title.length <= 65) && (padrao.test(url) == true) && perg >= 3 && nivel >= 2){
         const quest1 = document.querySelector("#começo")
         quest1.classList.add("oculto")
-        
         const quest2 = document.querySelector("#perguntas")
         quest2.classList.remove("oculto")
+        MostrarPerguntas()
     } else{
         alert("Dados Incorretos")
-    } 
+    }
 
 }
 
-// if(title.length >= 20 && title.length <= 65 ){
-//     console.log("ACERTOU")
-// } else{
-//     console.log("ERROU")
-// }
-// //validação do titulo
+function MostrarPerguntas(){
+    let perg = document.querySelector(".pergQuizz").value
 
-
-// //validação da url
-// if (padrao.test(url)) {
-//     console.log("URL Valida");
-// } else {
-//     console.log("URL Invalida");
-// }
-// //validação da url
-
-// //validaçao quantidade de perguntas
-// if(perg >= 3){
-//     console.log("Perguntas Validas")
-// } else {
-//     console.log("PErguntas Invalidas")
-// }
-// //validaçao quantidade de perguntas
-
-
-// if(nivel >= 2){
-//     console.log("Nivel Validas")
-// } else {
-//     console.log("Nivel Invalidas")
-// }
-
+const ovo = document.querySelector("#bug")
+for (let i = 1; i <= perg; i++){
+            ovo.innerHTML += `           
+            <div class="topicos margint">Pergunta ${i} <img class="icon"src="imagens/edit.svg"></div>
+            <div class="caixona">
+                <input class="marginb"placeholder="Texto da pergunta"></input>
+                <input placeholder="Cor de fundo da pergunta"></input>
+                <div class="topicos marginl">Resposta Correta</div>
+                <input class="marginb" placeholder="Resposta correta"></input>
+                <input placeholder="URL da imagem"></input>
+                <div class="topicos marginl">Resposta Correta</div>
+                <input class="marginb" placeholder="Resposta incorreta 1"></input>
+                <input class="marginb " placeholder="URL da imagem 1"></input>
+                <input class="marginb margint" placeholder="Resposta incorreta 2"></input>
+                <input  class="marginb" placeholder="URL da imagem 2"></input>
+                </div>`
+}
+            }
+            
+function validacaoTela2(){
+    
+}
