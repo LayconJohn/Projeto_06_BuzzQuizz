@@ -1,8 +1,9 @@
 const meuQuiz = document.querySelector(".meu-quizz");
-const todosQuizz = document.querySelector(".todos-quizz");
+//const todosQuizz = document.querySelector(".todos-quizz");
 const tela1 = document.querySelector(".tela1");
 const tela2 = document.querySelector(".tela2");
 const tela3 = document.querySelector(".tela3");
+let quizzGeral = [];
 
 function renderizarMensagemTela1() {
   inserirTela1();
@@ -52,41 +53,32 @@ function inserirMeuQuiz() {
 }
 
 function inserirTodosQuizz() {
-  document.querySelector(".todos-quizz").innerHTML += `
+  let espacoTodosQuizz = document.querySelector(".todos-quizz");
+  espacoTodosQuizz.innerHTML = `
     <h3>Todos os Quizzes</h3>
-    <div class="tela1-quizzes">
-      <div class="tela1-quizz simpsons" onclick="selecionarQuizz(this)">
-        <p>
-          Acerte os personagens corretos dos Simpsons e prove seu amor!
-        </p>
-      </div>
-      <div class="tela1-quizz de-boas" onclick="selecionarQuizz(this)">
-        <p>
-          O quanto você é de boas?
-        </p>
-      </div>
-      <div class="tela1-quizz simpsons" onclick="selecionarQuizz(this)">
-        <p>
-          Acerte os personagens corretos dos Simpsons e prove seu amor!
-        </p>
-      </div>
-      <div class="tela1-quizz de-boas" onclick="selecionarQuizz(this)">
-        <p>
-          O quanto você é de boas?
-        </p>
-      </div>
-      <div class="tela1-quizz simpsons" onclick="selecionarQuizz(this)">
-        <p>
-          Acerte os personagens corretos dos Simpsons e prove seu amor!
-        </p>
-      </div>
-      <div class="tela1-quizz de-boas" onclick="selecionarQuizz(this)">
-        <p>
-          O quanto você é de boas?
-        </p>
-      </div>
+    <div class="tela1-quizzes" id="tela1-quizzes">
+
     </div>
-  `
+    `
+
+    let cardQuizzes = document.querySelector("#tela1-quizzes");
+    cardQuizzes.innerHTML = ``;      
+    
+    for (let i = 0; i < 6; i ++) {
+      let titulo = quizzGeral[i].title;
+      let imagemURL = quizzGeral[i].image;
+      cardQuizzes.innerHTML += `
+      <div class="tela1-quizz">
+        <img
+          src=${imagemURL}
+          alt=""
+        />
+        <p>
+          ${titulo}
+        </p>
+      </div>
+      `;
+    }
 }
 
 function criarBotao() {
@@ -99,5 +91,26 @@ function selecionarQuizz(quizz) {
   tela2.classList.remove("oculto");
 }
 
-renderizarMensagemTela1();
+function pegarTodosQuizz() {
+  const promisse = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes");
+  promisse.then(carregarQuizz);
+  promisse.catch(tratarErro);
+}
 
+function carregarQuizz(response) {
+  quizzGeral = response.data 
+  renderizarMensagemTela1();
+}
+
+function tratarErro() {
+  console.log("Deu ruim (Erro)");
+}
+
+//Teste
+function mudarImagem(elemento, link) {
+  elemento = document.querySelector(".tela1-quizz")
+  elemento.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("${link}")`;
+}  
+//Teste
+
+pegarTodosQuizz();
