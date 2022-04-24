@@ -4,6 +4,12 @@ const tela1 = document.querySelector(".tela1");
 const tela2 = document.querySelector(".tela2");
 const tela3 = document.querySelector(".tela3");
 let quizzGeral = [];
+let quizzesSelecionados = [];
+let titulo;
+let imagemURL;
+let idQuizz;
+let levelQuizz;
+let questionsQuizz;
 
 function renderizarMensagemTela1() {
   inserirTela1();
@@ -65,10 +71,14 @@ function inserirTodosQuizz() {
     cardQuizzes.innerHTML = ``;      
     
     for (let i = 0; i < 6; i ++) {
-      let titulo = quizzGeral[i].title;
-      let imagemURL = quizzGeral[i].image;
+      titulo = quizzGeral[i].title;
+      imagemURL = quizzGeral[i].image;
+      idQuizz = quizzGeral[i].id;
+      levelQuizz = quizzGeral[i].levels;
+      questionsQuizz = quizzGeral[i].questions;
+
       cardQuizzes.innerHTML += `
-      <div class="tela1-quizz">
+      <div class="tela1-quizz ${idQuizz}" onclick="selecionarQuizz(this)" id="${i}">
         <img
           src=${imagemURL}
           alt=""
@@ -78,6 +88,8 @@ function inserirTodosQuizz() {
         </p>
       </div>
       `;
+
+      armazenarQuizz()
     }
 }
 
@@ -87,8 +99,10 @@ function criarBotao() {
 }
 
 function selecionarQuizz(quizz) {
-  tela1.classList.add("oculto");
-  tela2.classList.remove("oculto");
+  //tela1.classList.add("oculto");
+  //tela2.classList.remove("oculto");
+  let idElemento = quizz.id
+  console.log(quizzesSelecionados[idElemento])
 }
 
 function pegarTodosQuizz() {
@@ -106,11 +120,9 @@ function tratarErro() {
   console.log("Deu ruim (Erro)");
 }
 
-//Teste
-function mudarImagem(elemento, link) {
-  elemento = document.querySelector(".tela1-quizz")
-  elemento.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("${link}")`;
-}  
-//Teste
+function armazenarQuizz() {
+  //armazenar os Quizzes em um objeto através do id
+  quizzesSelecionados.push({id: idQuizz, questions: questionsQuizz, levels: levelQuizz})
+}
 
 pegarTodosQuizz();
