@@ -1,4 +1,4 @@
-
+let analise = []
 
 function InserirTela3 (){
     const tela3 = document.querySelector(".tela3")
@@ -22,7 +22,7 @@ function InserirTela3 (){
             <div id="bug" class="container">
             
             </div>
-    <div onclick="validacaoTela2()"class="botao marginb"> <div class="next">Prosseguir pra criar níveis</div></div>
+    <div onclick="testeFinal()"class="botao marginb"> <div class="next">Prosseguir pra criar níveis</div></div>
             </div>
         </div>
         <!-- PARTE 2 -->
@@ -71,7 +71,7 @@ function validacaoTela1(){
 
 function MostrarPerguntas(){
     let perg = document.querySelector(".pergQuizz").value
-    let analise = []
+    
 const ovo = document.querySelector("#bug")
 for (let i = 1; i <= perg; i++){
             ovo.innerHTML += `           
@@ -88,6 +88,9 @@ for (let i = 1; i <= perg; i++){
                 <input class="respIncorreta2 marginb margint" placeholder="Resposta incorreta 2"></input>
                 <input  class="URLresp2 marginb" placeholder="URL da imagem 2"></input>
                 </div>`
+
+            analise.push(ovo.innerHTML)
+            console.log(analise)
 }
 //POSSIVEL SOLUÇAO PARA A ANALISE INDIVIDUAL DE CADA "OVO" CRIADO, 
 //COLOCAR NUMA ARRAY CADA NOVO "OVO" E UTILIZANDO O MÉTODO "Array.prototype.every(validacaoTela2())"
@@ -109,9 +112,14 @@ function validacaoTela2(){
 
 
     if(titlePerg.length >= 20 && (padraoCor.test(corFundo) == true) && respCorreta !== ""  && (padraoURL.test(URLresp) == true) && (respIncorreta !== "" && padraoURL.test(URLresp1) == true ) || (respIncorreta2 !== "" && padraoURL.test(URLresp2) == true)){
-        alert("YES")
+        return true
     }else{
-        alert("Preencha os dados corretamente")
+        return false
     }
 }
 
+function testeFinal(){
+    
+ console.log(analise.every())
+
+}
