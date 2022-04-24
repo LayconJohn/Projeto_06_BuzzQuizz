@@ -22,7 +22,7 @@ function InserirTela3 (){
             <div id="bug" class="container">
             
             </div>
-            <div class="botao marginb"> <div class="next">Prosseguir pra criar níveis</div></div>
+    <div onclick="validacaoTela2()"class="botao marginb"> <div class="next">Prosseguir pra criar níveis</div></div>
             </div>
         </div>
         <!-- PARTE 2 -->
@@ -71,26 +71,47 @@ function validacaoTela1(){
 
 function MostrarPerguntas(){
     let perg = document.querySelector(".pergQuizz").value
-
+    let analise = []
 const ovo = document.querySelector("#bug")
 for (let i = 1; i <= perg; i++){
             ovo.innerHTML += `           
             <div class="topicos margint">Pergunta ${i} <img class="icon"src="imagens/edit.svg"></div>
             <div class="caixona">
-                <input class="marginb"placeholder="Texto da pergunta"></input>
-                <input placeholder="Cor de fundo da pergunta"></input>
+                <input class="titlePergunta marginb" placeholder="Texto da pergunta"></input>
+                <input class="corFundo" placeholder="Cor de fundo da pergunta"></input>
                 <div class="topicos marginl">Resposta Correta</div>
-                <input class="marginb" placeholder="Resposta correta"></input>
-                <input placeholder="URL da imagem"></input>
-                <div class="topicos marginl">Resposta Correta</div>
-                <input class="marginb" placeholder="Resposta incorreta 1"></input>
-                <input class="marginb " placeholder="URL da imagem 1"></input>
-                <input class="marginb margint" placeholder="Resposta incorreta 2"></input>
-                <input  class="marginb" placeholder="URL da imagem 2"></input>
+                <input class="respCorreta marginb" placeholder="Resposta correta"></input>
+                <input class="URLresp" placeholder="URL da imagem"></input>
+                <div class="topicos marginl">Resposta Incorreta</div>
+                <input class="respIncorreta marginb" placeholder="Resposta incorreta 1"></input>
+                <input class="URLresp1 marginb " placeholder="URL da imagem 1"></input>
+                <input class="respIncorreta2 marginb margint" placeholder="Resposta incorreta 2"></input>
+                <input  class="URLresp2 marginb" placeholder="URL da imagem 2"></input>
                 </div>`
 }
+//POSSIVEL SOLUÇAO PARA A ANALISE INDIVIDUAL DE CADA "OVO" CRIADO, 
+//COLOCAR NUMA ARRAY CADA NOVO "OVO" E UTILIZANDO O MÉTODO "Array.prototype.every(validacaoTela2())"
+//E CRIANDO UMA CONDICIONAL PARA QUE CASO TODOS OS ELEMENTOS ANALISADOS PELO MÉTODO SEJAM VERDADEIROS ELE IRÁ PARA A PRÓXIMA PÁGINA 
             }
             
 function validacaoTela2(){
-    
+    let titlePerg = document.querySelector(".titlePergunta").value
+    let corFundo = document.querySelector(".corFundo").value
+    let respCorreta = document.querySelector(".respCorreta").value
+    let URLresp = document.querySelector(".URLresp").value
+    let respIncorreta = document.querySelector(".respIncorreta").value
+    let URLresp1 = document.querySelector(".URLresp1").value
+    let respIncorreta2 = document.querySelector(".respIncorreta2").value
+    let URLresp2 = document.querySelector(".URLresp2").value
+
+    const padraoURL = /^https?:\/\/.+\/.+$/
+    const padraoCor = /^#[0-9A-F]{6}$/
+
+
+    if(titlePerg.length >= 20 && (padraoCor.test(corFundo) == true) && respCorreta !== ""  && (padraoURL.test(URLresp) == true) && (respIncorreta !== "" && padraoURL.test(URLresp1) == true ) || (respIncorreta2 !== "" && padraoURL.test(URLresp2) == true)){
+        alert("YES")
+    }else{
+        alert("Preencha os dados corretamente")
+    }
 }
+
