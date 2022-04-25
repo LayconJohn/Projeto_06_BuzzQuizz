@@ -155,6 +155,7 @@ function inserirTituloTela2() {
 function inserirQuestoes () {
   let questoes = quizzesSelecionados[idElemento].questions;
   for (let i = 0; i < questoes.length; i++) {
+    let listaRespostas = shuffle(questoes[i].answers);
     document.querySelector(".pagina").innerHTML += `
     <div class="tela2-container">
       <div class="cabecalho">
@@ -163,29 +164,29 @@ function inserirQuestoes () {
       <div class="quizzes">
           <div class="caixa margem">
             <div class="quizz">
-              <img src=${questoes[i].answers[0].image}/>
+              <img src=${listaRespostas[0].image}/>
             </div>
-              <p class="estilo2">${questoes[i].answers[0].text}</p>
+              <p class="estilo2">${listaRespostas[0].text}</p>
           </div>
           <div class="caixa">
               <div class="quizz">
-                <img src=${questoes[i].answers[1].image}/>
+                <img src=${listaRespostas[1].image}/>
               </div>
-              <p class="estilo2">${questoes[i].answers[1].text}</p>
+              <p class="estilo2">${listaRespostas[1].text}</p>
           </div>
       </div>
       <div class="quizzes">
           <div class="caixa margem">
               <div class="quizz">
-                <img src=${questoes[i].answers[0].image}/>
+                <img src=${listaRespostas[0].image}/>
               </div>
-              <p class="estilo2">${questoes[i].answers[0].text}</p>
+              <p class="estilo2">${listaRespostas[0].text}</p>
           </div>
           <div class="caixa">
               <div class="quizz">
-                <img src=${questoes[i].answers[1].image}/>
+                <img src=${listaRespostas[1].image}/>
               </div>
-              <p class="estilo2">${questoes[i].answers[1].text}</p>
+              <p class="estilo2">${listaRespostas[1].text}</p>
           </div>
       </div>
     </div>
