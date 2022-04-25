@@ -1,5 +1,5 @@
+//Variáveis Globais
 const meuQuiz = document.querySelector(".meu-quizz");
-//const todosQuizz = document.querySelector(".todos-quizz");
 const tela1 = document.querySelector(".tela1");
 const tela2 = document.querySelector(".tela2");
 const tela3 = document.querySelector(".tela3");
@@ -91,7 +91,6 @@ function inserirTodosQuizz() {
           </p>
         </div>
         `;
-  
         armazenarQuizz()
       }
     }
@@ -127,11 +126,9 @@ function tratarErro() {
 }
 
 function armazenarQuizz() {
-  //armazenar os Quizzes em um objeto através do id
   quizzesSelecionados.push({id: idQuizz, titulo: titulo, imagem: imagemURL, questions: questionsQuizz, levels: levelQuizz})
 }
 
-<<<<<<< HEAD
 function inserirTituloTela2() {
   document.querySelector(".tela2").innerHTML = "";
 
@@ -156,8 +153,7 @@ function inserirTituloTela2() {
 }
 
 function inserirQuestoes () {
-  let questoes = quizzesSelecionados[idElemento].questions
-  console.log(questoes.length) 
+  let questoes = quizzesSelecionados[idElemento].questions;
   for (let i = 0; i < questoes.length; i++) {
     document.querySelector(".pagina").innerHTML += `
     <div class="tela2-container">
@@ -198,6 +194,3 @@ function inserirQuestoes () {
 } 
 
 pegarTodosQuizz();
-=======
-pegarTodosQuizz();
->>>>>>> acc817f94b5eca4061d80335b1f448310e8ab28e
