@@ -64,8 +64,8 @@ function validacaoTela1(){
         quest2.classList.remove("oculto")
         MostrarPerguntas()
     } else{
-        alert("Dados Incorretos")
-    }
+       alert("Dados Incorretos")
+     }
 
 }
 
@@ -74,6 +74,7 @@ function MostrarPerguntas(){
     
 const ovo = document.querySelector("#bug")
 for (let i = 1; i <= perg; i++){
+            analise.push(ovo.innerHTML)
             ovo.innerHTML += `           
             <div class="topicos margint">Pergunta ${i} <img class="icon"src="imagens/edit.svg"></div>
             <div class="caixona">
@@ -88,8 +89,8 @@ for (let i = 1; i <= perg; i++){
                 <input class="respIncorreta2 marginb margint" placeholder="Resposta incorreta 2"></input>
                 <input  class="URLresp2 marginb" placeholder="URL da imagem 2"></input>
                 </div>`
-
-            analise.push(ovo.innerHTML)
+                validacaoTela2()
+            
             console.log(analise)
 }
 //POSSIVEL SOLUÇAO PARA A ANALISE INDIVIDUAL DE CADA "OVO" CRIADO, 
