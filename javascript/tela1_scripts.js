@@ -73,7 +73,8 @@ function inserirTodosQuizz() {
     cardQuizzes.innerHTML = ``;      
     
     for (let i = 0; i < 6; i ++) {
-      if(quizzUsuario.indexOf(quizzGeral[i].id) === -1){
+      //quizzUsuario.indexOf(quizzGeral[i].id) === -1
+      if(true){
         titulo = quizzGeral[i].title;
         imagemURL = quizzGeral[i].image;
         idQuizz = quizzGeral[i].id;

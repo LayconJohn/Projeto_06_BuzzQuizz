@@ -126,4 +126,3 @@ function validacaoTela1(){
 // } else {
 //     console.log("Nivel Invalidas")
 // }
-
