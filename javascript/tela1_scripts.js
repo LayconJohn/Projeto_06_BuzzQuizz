@@ -10,6 +10,7 @@ let imagemURL;
 let idQuizz;
 let levelQuizz;
 let questionsQuizz;
+let quizzUsuario = JSON.parse(localStorage.getItem(""));
 
 function renderizarMensagemTela1() {
   inserirTela1();
@@ -17,7 +18,7 @@ function renderizarMensagemTela1() {
   inserirTodosQuizz();
 }
 
-function inserirTela1 () {
+function inserirTela1() {
   document.querySelector(".tela1").innerHTML += `
     <main>
       <section class="meu-quizz">
@@ -71,25 +72,27 @@ function inserirTodosQuizz() {
     cardQuizzes.innerHTML = ``;      
     
     for (let i = 0; i < 6; i ++) {
-      titulo = quizzGeral[i].title;
-      imagemURL = quizzGeral[i].image;
-      idQuizz = quizzGeral[i].id;
-      levelQuizz = quizzGeral[i].levels;
-      questionsQuizz = quizzGeral[i].questions;
-
-      cardQuizzes.innerHTML += `
-      <div class="tela1-quizz ${idQuizz}" onclick="selecionarQuizz(this)" id="${i}">
-        <img
-          src=${imagemURL}
-          alt=""
-        />
-        <p>
-          ${titulo}
-        </p>
-      </div>
-      `;
-
-      armazenarQuizz()
+      if(quizzUsuario.indexOf(quizzGeral[i].id) === -1){
+        titulo = quizzGeral[i].title;
+        imagemURL = quizzGeral[i].image;
+        idQuizz = quizzGeral[i].id;
+        levelQuizz = quizzGeral[i].levels;
+        questionsQuizz = quizzGeral[i].questions;
+  
+        cardQuizzes.innerHTML += `
+        <div class="tela1-quizz ${idQuizz}" onclick="selecionarQuizz(this)" id="${i}">
+          <img
+            src=${imagemURL}
+            alt=""
+          />
+          <p>
+            ${titulo}
+          </p>
+        </div>
+        `;
+  
+        armazenarQuizz()
+      }
     }
 }
 
