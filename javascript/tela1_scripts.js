@@ -10,6 +10,7 @@ let imagemURL;
 let idQuizz;
 let levelQuizz;
 let questionsQuizz;
+let idElemento;
 
 function renderizarMensagemTela1() {
   inserirTela1();
@@ -99,10 +100,12 @@ function criarBotao() {
 }
 
 function selecionarQuizz(quizz) {
-  //tela1.classList.add("oculto");
-  //tela2.classList.remove("oculto");
-  let idElemento = quizz.id
+  tela1.classList.add("oculto");
+  tela2.classList.remove("oculto");
+  idElemento = quizz.id
   console.log(quizzesSelecionados[idElemento])
+  inserirTituloTela2();
+  inserirQuestoes();
 }
 
 function pegarTodosQuizz() {
@@ -122,7 +125,72 @@ function tratarErro() {
 
 function armazenarQuizz() {
   //armazenar os Quizzes em um objeto através do id
-  quizzesSelecionados.push({id: idQuizz, questions: questionsQuizz, levels: levelQuizz})
+  quizzesSelecionados.push({id: idQuizz, titulo: titulo, imagem: imagemURL, questions: questionsQuizz, levels: levelQuizz})
 }
+
+function inserirTituloTela2() {
+  document.querySelector(".tela2").innerHTML = "";
+
+  document.querySelector(".tela2").innerHTML += `
+  <div class="topbar">
+    <h1 class="tela2-h1">BuzzQuizz</h1>
+  </div>
+  <div class="banner">
+      <div class="titulo">
+          <h3>${quizzesSelecionados[idElemento].titulo}</h3>
+      </div>
+      <img
+          src=${quizzesSelecionados[idElemento].imagem}
+          alt=""
+      />
+  </div>
+
+  <div class="pagina">
+  
+  </div>
+  `
+}
+
+function inserirQuestoes () {
+  let questoes = quizzesSelecionados[idElemento].questions
+  console.log(questoes.length) 
+  for (let i = 0; i < questoes.length; i++) {
+    document.querySelector(".pagina").innerHTML += `
+    <div class="tela2-container">
+      <div class="cabecalho">
+          <p class="estilo1">${questoes[i].title}</p>
+      </div>
+      <div class="quizzes">
+          <div class="caixa margem">
+            <div class="quizz">
+              <img src=${questoes[i].answers[0].image}/>
+            </div>
+              <p class="estilo2">${questoes[i].answers[0].text}</p>
+          </div>
+          <div class="caixa">
+              <div class="quizz">
+                <img src=${questoes[i].answers[1].image}/>
+              </div>
+              <p class="estilo2">${questoes[i].answers[1].text}</p>
+          </div>
+      </div>
+      <div class="quizzes">
+          <div class="caixa margem">
+              <div class="quizz">
+                <img src=${questoes[i].answers[0].image}/>
+              </div>
+              <p class="estilo2">${questoes[i].answers[0].text}</p>
+          </div>
+          <div class="caixa">
+              <div class="quizz">
+                <img src=${questoes[i].answers[1].image}/>
+              </div>
+              <p class="estilo2">${questoes[i].answers[1].text}</p>
+          </div>
+      </div>
+    </div>
+    `
+  }
+} 
 
 pegarTodosQuizz();

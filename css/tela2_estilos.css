@@ -34,11 +34,20 @@ h3 {
 .banner {
     height: 227px;
     width: 100vw;
-    background-image: url("https://s3-alpha-sig.figma.com/img/60f6/4bae/cb4c4e815fc36d9f0f0579a657241eba?Expires=1651449600&Signature=P7wfbXBFDhqcagj34oaSeU5yC57aWtj7vsEVMrZgXGDyXv~02hyr8q12kFpBMCsnMDtopybt7DReSR8KPjEbyMSmzeboDu2rqjrwTpe7k9zxrfIuoNCpmdPA5D7VJcP2nt4OjDZyJrCHUsNBNKE~CrgbzvkSgqMtcyH97IMH-azDZSm7sKnqyojKFSfcR1TV7x6cKmD1Yce5nfVzTK8Siv9aMXIdM5P~oXvoudONr9Hq6mcLpgZlOYCmbjvQsTDwKuq9YWvr6hGsA9C4jEP-d9J2Pli~cl8NFS4TQUK9F7mVU6pltUQsgpes5N7lXfyI50gyF8p6R~zj3VbsNeeQWQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA");
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
     color: white;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    position: relative;
+}
+
+.banner img {
+    height: 227px;
+    width: 100vw;
+    opacity: 0.7;
+    object-fit: cover;
+    text-align: center;
 }
 
 .titulo {
@@ -49,6 +58,8 @@ h3 {
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: absolute;
+
 }
 
 
@@ -111,7 +122,12 @@ display: flex;
     height: 175.2px;
     margin-top: 20px;
     background-size: cover;
-    background-image: url("https://s3-alpha-sig.figma.com/img/7212/aa92/e0229a2cb5aea15ab3fd2b5d36cb9a60?Expires=1651449600&Signature=Le3h9pkCoXPY1QrLnv3vZUPheJ56R3-55nKS9fqcnFFr8yY11ZP~AEUhQ2nJyCYJLPtqdBordKC2SVwyTo7ClVAB32F-B6MQw7MhhFZYzm2TOgn-WtkYo1EPoBao9k07gebOPYo82u-qhhZklOeZe~cltVwj0ov0fpVwHRY5Yku1dCrkqoEprDM6zlF0YcMKO5lqqJOGzHhlgfwV40Wu5EH2HxnqAU8kygwq361ZLycy0qQ5~RnLK3m9mMOwFCfBkh4zM5aN2hHge-cr4MXJ8v5a5SQgBcF2VHZac9gWFk~CMGYpmkSFDqbaaKdJ0bauRewOM~I6ieh6HwXHg3WatQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA");
+}
+
+.quizz img {
+    width: 330.91px;
+    height: 175.2px;
+    object-fit: cover;
 }
 
 .margem {

@@ -92,4 +92,4 @@ function inserirTela2 () {
     `
 } 
 
-inserirTela2 ()
+//inserirTela2 ()
