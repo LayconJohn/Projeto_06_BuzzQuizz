@@ -30,7 +30,7 @@ const padraoCor = /^#[0-9A-F]{6}$/
 
 function InserirTela3 (){
     const tela3 = document.querySelector(".tela3")
-        tela3.innerHTML = `<header>BuzzQuizz</header>
+        tela3.innerHTML = `
         <!-- PARTE 1 -->
         <div id="começo" class="questionario">
         <h1>Comece pelo começo</h1>

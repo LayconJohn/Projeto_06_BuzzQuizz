@@ -80,11 +80,9 @@ function inserirTituloTela2() {
     document.querySelector(".tela2").innerHTML = "";
   
     document.querySelector(".tela2").innerHTML += `
-    <div class="topbar">
-      <h1 class="tela2-h1">BuzzQuizz</h1>
-    </div>
-    <div class="banner">
-        <div class="titulo">
+    
+    <div class="tela2-banner">
+        <div class="tela2-titulo">
             <h3>${quizzSelecionado.title}</h3>
         </div>
         <img

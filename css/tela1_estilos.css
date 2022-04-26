@@ -14,7 +14,6 @@ body {
 /* Topo */
 header {
   width: 100%;
-  height: 69px;
   background-color: #ec362d;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
   display: flex;
@@ -23,7 +22,8 @@ header {
   margin-bottom: 77px;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 2;
+  padding: 20px 0;
 }
 
 .topo h1 {
@@ -70,6 +70,7 @@ section {
   color: #ec362d;
   background-color: #fafafa;
   margin-top: 30px;
+  cursor: pointer;
 }
 
 .quizz-vazio button:hover {
@@ -138,6 +139,7 @@ section {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  cursor: pointer;
 }
 
 .tela1-quizz img {

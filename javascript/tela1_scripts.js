@@ -26,9 +26,6 @@ function renderizarMensagemTela1() {
 
 function inserirTela1() {
   document.querySelector(".tela1").innerHTML += `
-  <header class="topo">
-    <h1>BuzzQuiz</h1>
-  </header>
     <main>
       <section class="meu-quizz">
 
