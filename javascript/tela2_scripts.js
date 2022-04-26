@@ -2,11 +2,11 @@ let quizzSelecionado;
 let elementoclicado;
 let posicaoContainer = 1;
 let questoesRespondidas = 0;
+let totalPerguntas;
+const TEMPO_1S = 1;
+let acertos = 0;
 
 function mostrarRespostas(resposta){
-    if (questoesRespondidas === quizzSelecionado.questions.length) {
-        alert('Tudo respondido')
-    }
     verificarResposta(resposta)
     console.log(resposta.parentNode);
     resposta.parentNode.querySelector(".certa").classList.add("verde");
@@ -24,6 +24,8 @@ function mostrarRespostas(resposta){
     }
 
     resposta.classList.remove("opacidade");
+
+    verificarSeRespondeuTudo();
 }
 
 function comparador() {
@@ -32,6 +34,7 @@ function comparador() {
 
 function inserirQuestoes() {
     let questoes = quizzSelecionado.questions;
+    totalPerguntas = questoes.length;
     for (let i = 0; i < questoes.length; i++) {
         let listaRespostas = questoes[i].answers.sort(comparador);
         let respostashtml = ""
@@ -127,9 +130,38 @@ function verificarResposta(elemento) {
   }
 
   function inserirTelaFinal() {
-    let questoes = quizzesSelecionados[idElemento].levels;
-    console.log(questoes)
-  
+    let porcentagemAcerto = (acertos/totalPerguntas)*100;
+    document.querySelector(".pagina").innerHTML += `
+    <div class="container">
+    <div class="cabecalho3">
+        <p class="estilo1">${porcentagemAcerto.toFixed(2)}% de acerto: Parabéns</p>
+    </div>
+    </div>
+    <div class="final">
+        <div class="botaoreiniciar">
+            <p class="estilo3" onclick="reniciarQuizz()" >Reiniciar Quizz</p>
+        </div>
+        <div class="voltarhome" onclick="voltarHome()">
+            <p class="estilo3">Voltar pra home</p>
+        </div>
+    </div>
+    `
+  }
+
+  function verificarSeRespondeuTudo() {
+    questoesRespondidas += 1;
+    if (questoesRespondidas === totalPerguntas) {
+        setTimeout(inserirTelaFinal, TEMPO_1S * 1000)
+        questoesRespondidas = 0;
+    }
+  }
+
+  function reniciarQuizz() {
+    window.location.reload()
+  }
+
+  function voltarHome() {
+    window.location.reload()
   }
 
 //inserirTela2 ()

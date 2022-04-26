@@ -13,7 +13,6 @@ let levelQuizz;
 let questionsQuizz;
 let idElemento;
 let quizzUsuario = [] // JSON.parse(localStorage.getItem(""));
-let acertos = 0;
 
 function renderizarMensagemTela1() {
   const promise = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes");
