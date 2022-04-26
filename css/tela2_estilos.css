@@ -239,7 +239,6 @@ h3 {
 
     .cabecalho{
         width: 340px;
-        margin-left: 18px;
     }
 
     .cabecalho2{
@@ -252,10 +251,15 @@ h3 {
         margin-left: 18px;
     }
 
+    .quizzes {
+        flex-direction: column;
+    }
+
     .quizz {
         width: 163px;
         height: 113px;
         margin-top: 13px;
+        margin-left: 34px;
     }
 
     .mensagemfinal {
@@ -270,6 +274,7 @@ h3 {
 
     .estilo2 {
         margin-top: 7px;
+        margin-left: 34px;
         font-weight: 700;
         font-size: 13px;
         line-height: 15px;

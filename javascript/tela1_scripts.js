@@ -3,6 +3,7 @@ const meuQuiz = document.querySelector(".meu-quizz");
 const tela1 = document.querySelector(".tela1");
 const tela2 = document.querySelector(".tela2");
 const tela3 = document.querySelector(".tela3");
+const TEMPO_2S = 2;
 let quizzGeral = [];
 let quizzesSelecionados = [];
 let titulo;
@@ -11,7 +12,8 @@ let idQuizz;
 let levelQuizz;
 let questionsQuizz;
 let idElemento;
-let quizzUsuario = [] //JSON.parse(localStorage.getItem(""));
+let quizzUsuario = [] // JSON.parse(localStorage.getItem(""));
+let acertos = 0;
 
 function renderizarMensagemTela1() {
   const promise = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes");
@@ -25,6 +27,9 @@ function renderizarMensagemTela1() {
 
 function inserirTela1() {
   document.querySelector(".tela1").innerHTML += `
+  <header class="topo">
+    <h1>BuzzQuiz</h1>
+  </header>
     <main>
       <section class="meu-quizz">
 
@@ -77,7 +82,8 @@ function inserirTodosQuizz() {
     cardQuizzes.innerHTML = ``;      
     
     for (let i = 0; i < 6; i ++) {
-      if(quizzUsuario.indexOf(quizzGeral[i].id) === -1){
+      //quizzUsuario.indexOf(quizzGeral[i].id) === -1
+      if(true){
         titulo = quizzGeral[i].title;
         imagemURL = quizzGeral[i].image;
         idQuizz = quizzGeral[i].id;
