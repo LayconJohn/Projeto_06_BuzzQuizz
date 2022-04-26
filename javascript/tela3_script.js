@@ -1,4 +1,16 @@
+let titlePerg;
+let corFundo;
+let respCorreta;
+let URLresp;
+let respIncorreta;
+let URLresp1;
+let respIncorreta2;
+let URLresp2;
+
 let analise = []
+
+const padraoURL = /^https?:\/\/.+\/.+$/
+const padraoCor = /^#[0-9A-F]{6}$/
 
 function InserirTela3 (){
     const tela3 = document.querySelector(".tela3")
@@ -22,7 +34,7 @@ function InserirTela3 (){
             <div id="bug" class="container">
             
             </div>
-    <div onclick="testeFinal()"class="botao marginb"> <div class="next">Prosseguir pra criar níveis</div></div>
+    <div onclick="SelecionarElemento(this)"class="botao marginb"> <div class="next">Prosseguir pra criar níveis</div></div>
             </div>
         </div>
         <!-- PARTE 2 -->
@@ -72,50 +84,115 @@ function validacaoTela1(){
 function MostrarPerguntas(){
     let perg = document.querySelector(".pergQuizz").value
     
-const ovo = document.querySelector("#bug")
+const coletor = document.querySelector("#bug")
 for (let i = 1; i <= perg; i++){
-            analise.push(ovo.innerHTML)
-            ovo.innerHTML += `           
+            
+            coletor.innerHTML += `           
             <div class="topicos margint">Pergunta ${i} <img class="icon"src="imagens/edit.svg"></div>
             <div class="caixona">
-                <input class="titlePergunta marginb" placeholder="Texto da pergunta"></input>
-                <input class="corFundo" placeholder="Cor de fundo da pergunta"></input>
+                <input onclick="selecionarElemento(this)" class="titlePergunta marginb" placeholder="Texto da pergunta"></input>
+                <input onclick="selecionarElemento(this)" class="corFundo" placeholder="Cor de fundo da pergunta"></input>
                 <div class="topicos marginl">Resposta Correta</div>
-                <input class="respCorreta marginb" placeholder="Resposta correta"></input>
-                <input class="URLresp" placeholder="URL da imagem"></input>
+                <input onclick="selecionarElemento(this)" class="respCorreta marginb" placeholder="Resposta correta"></input>
+                <input onclick="selecionarElemento(this)" class="URLresp" placeholder="URL da imagem"></input>
                 <div class="topicos marginl">Resposta Incorreta</div>
-                <input class="respIncorreta marginb" placeholder="Resposta incorreta 1"></input>
-                <input class="URLresp1 marginb " placeholder="URL da imagem 1"></input>
-                <input class="respIncorreta2 marginb margint" placeholder="Resposta incorreta 2"></input>
-                <input  class="URLresp2 marginb" placeholder="URL da imagem 2"></input>
+                <input onclick="selecionarElemento(this)" class="respIncorreta marginb" placeholder="Resposta incorreta 1"></input>
+                <input onclick="selecionarElemento(this)" class="URLresp1 marginb " placeholder="URL da imagem 1"></input>
+                <input onclick="selecionarElemento(this)" class="respIncorreta2 marginb margint" placeholder="Resposta incorreta 2"></input>
+                <input  onclick="selecionarElemento(this)" class="URLresp2 marginb" placeholder="URL da imagem 2"></input>
                 </div>`
-                validacaoTela2()
-            
+        
+            analise.push(coletor.innerHTML)
             console.log(analise)
 }
-//POSSIVEL SOLUÇAO PARA A ANALISE INDIVIDUAL DE CADA "OVO" CRIADO, 
-//COLOCAR NUMA ARRAY CADA NOVO "OVO" E UTILIZANDO O MÉTODO "Array.prototype.every(validacaoTela2())"
-//E CRIANDO UMA CONDICIONAL PARA QUE CASO TODOS OS ELEMENTOS ANALISADOS PELO MÉTODO SEJAM VERDADEIROS ELE IRÁ PARA A PRÓXIMA PÁGINA 
             }
             
-function validacaoTela2(){
-    let titlePerg = document.querySelector(".titlePergunta").value
-    let corFundo = document.querySelector(".corFundo").value
-    let respCorreta = document.querySelector(".respCorreta").value
-    let URLresp = document.querySelector(".URLresp").value
-    let respIncorreta = document.querySelector(".respIncorreta").value
-    let URLresp1 = document.querySelector(".URLresp1").value
-    let respIncorreta2 = document.querySelector(".respIncorreta2").value
-    let URLresp2 = document.querySelector(".URLresp2").value
+// function validacaoTela2(){
+//      titlePerg = document.querySelector(".titlePergunta").value
+//      corFundo = document.querySelector(".corFundo").value
+//      respCorreta = document.querySelector(".respCorreta").value
+//      URLresp = document.querySelector(".URLresp").value
+//      respIncorreta = document.querySelector(".respIncorreta").value
+//      URLresp1 = document.querySelector(".URLresp1").value
+//      respIncorreta2 = document.querySelector(".respIncorreta2").value
+//      URLresp2 = document.querySelector(".URLresp2").value
 
-    const padraoURL = /^https?:\/\/.+\/.+$/
-    const padraoCor = /^#[0-9A-F]{6}$/
+    
 
 
-    if(titlePerg.length >= 20 && (padraoCor.test(corFundo) == true) && respCorreta !== ""  && (padraoURL.test(URLresp) == true) && (respIncorreta !== "" && padraoURL.test(URLresp1) == true ) || (respIncorreta2 !== "" && padraoURL.test(URLresp2) == true)){
-        return true
-    }else{
-        return false
+//     if(titlePerg.length >= 20 && (padraoCor.test(corFundo) == true) && respCorreta !== ""  && (padraoURL.test(URLresp) == true) && (respIncorreta !== "" && padraoURL.test(URLresp1) == true ) || (respIncorreta2 !== "" && padraoURL.test(URLresp2) == true)){
+//         return true
+//     }else{
+//         return false
+//     }
+// }
+
+function selecionarElemento(elemento){
+        
+    if (elemento == `<input onclick="selecionarElemento(this)" class="titlePergunta marginb" placeholder="Texto da pergunta"></input>`) {
+        titlePerg = document.querySelector(".titlePergunta").value
+        if(titlePerg.length >= 20){
+            console.log("titulo certo")
+        } else {
+            console.log("titulo errado")
+        }
+    }
+    if (elemento == `<input onclick="selecionarElemento(this)" class="corFundo" placeholder="Cor de fundo da pergunta"></input>`){
+        corFundo = document.querySelector(".corFundo").value
+        if(padraoCor.test(corFundo) == true){
+            console.log("cor certo")
+        } else {
+            console.log("cor errado")
+        }
+    }
+    if (elemento == `<input onclick="selecionarElemento(this)" class="respCorreta marginb" placeholder="Resposta correta"></input>`){
+        respCorreta = document.querySelector(".respCorreta").value
+        if(respCorreta !== ""){
+            console.log("resposta certa")
+        } else {
+            console.log("resposta vazia")
+        }
+    }
+    if (elemento == `<input onclick="selecionarElemento(this)" class="URLresp" placeholder="URL da imagem"></input>`){
+        URLresp = document.querySelector(".URLresp")
+        if (padraoURL.test(URLresp) == true){
+            console.log("url certo")
+        } else {
+                console.log("url errado")
+        }   
+    }
+    if (elemento == `<input onclick="selecionarElemento(this)" class="respIncorreta marginb" placeholder="Resposta incorreta 1"></input>`){
+        respIncorreta = document.querySelector(".respIncorreta").value
+        if (respIncorreta !== ""){
+            console.log("Incorreta preenchida")
+        } else {
+            console.log("Incorreta Vazia")
+        }
+
+    }
+    if (elemento == `<input onclick="selecionarElemento(this)" class="URLresp1 marginb " placeholder="URL da imagem 1"></input>`){
+        URLresp1 = document.querySelector(".URLresp1").value
+        if (padraoURL.test(URLresp1) == true){
+            console.log("url resposta certo")
+        } else {
+            console.log("url resposta incorreta")
+        }
+    }
+    if (elemento == `<input onclick="selecionarElemento(this)" class="respIncorreta2 marginb margint" placeholder="Resposta incorreta 2"></input>`){
+        respIncorreta2 = document.querySelector(".respIncorreta2").value
+        if (respIncorreta2 !== ""){
+            console.log("Incorreta 2 preenchida")
+        } else {
+            console.log("Incorreta 2 Vazia")
+        }
+    }
+    if (elemento == `<input  onclick="selecionarElemento(this)" class="URLresp2 marginb" placeholder="URL da imagem 2"></input>`){
+        URLresp2 = document.querySelector(".URLresp2").value
+        if (padraoURL.test(URLresp2) == true){
+            console.log("url resposta 2 certo")
+        } else {
+            console.log("url resposta 2 incorreta")
+        } 
     }
 }
 
@@ -137,4 +214,6 @@ function testeFinal(){
     
  console.log(analise.every())
 
+function Check(){
+    selecionarElemento ()
 }
