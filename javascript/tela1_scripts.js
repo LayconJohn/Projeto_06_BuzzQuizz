@@ -205,14 +205,20 @@ pegarTodosQuizz();
 
 function verificarResposta(elemento) {
   let elementoclicado = elemento
+   
   if (elementoclicado.classList.contains("true")) {
     acertos += 1;
   }
   console.log(acertos)
-  setTimeout(function () {
-    document.querySelector('#container1').scrollIntoView()},
-     TEMPO_2S * 1000)
-  //Aplicar dentro de um for
+  setTimeout(ScrollTela, TEMPO_2S * 1000)
+}
+
+function ScrollTela() {
+  let posicaoContainer = 0;
+  document.querySelector(`#container${posicaoContainer}`).scrollIntoView()
+  posicaoContainer += 1;
+
+  console.log(document.querySelector(`#container${posicaoContainer-1}`))
 }
 
 pegarTodosQuizz();
