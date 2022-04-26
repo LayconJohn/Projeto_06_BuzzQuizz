@@ -21,6 +21,9 @@ function renderizarMensagemTela1() {
 
 function inserirTela1() {
   document.querySelector(".tela1").innerHTML += `
+  <header class="topo">
+    <h1>BuzzQuiz</h1>
+  </header>
     <main>
       <section class="meu-quizz">
 
@@ -162,13 +165,13 @@ function inserirQuestoes () {
           <p class="estilo1">${questoes[i].title}</p>
       </div>
       <div class="quizzes">
-          <div class="caixa margem">
+          <div class="caixa  ${questoes[i].answers[0].isCorrectAnswer}" onclick="verificarResposta(this)">
             <div class="quizz">
               <img src=${questoes[i].answers[0].image}/>
             </div>
               <p class="estilo2">${questoes[i].answers[0].text}</p>
           </div>
-          <div class="caixa">
+          <div class="caixa  ${questoes[i].answers[0].isCorrectAnswer}" onclick="verificarResposta(this)">
               <div class="quizz">
                 <img src=${questoes[i].answers[1].image}/>
               </div>
@@ -176,13 +179,13 @@ function inserirQuestoes () {
           </div>
       </div>
       <div class="quizzes">
-          <div class="caixa margem">
-              <div class="quizz">
+          <div class="caixa ${questoes[i].answers[0].isCorrectAnswer}" onclick="verificarResposta(this)">
+              <div class="quizz ">
                 <img src=${questoes[i].answers[0].image}/>
               </div>
               <p class="estilo2">${questoes[i].answers[0].text}</p>
           </div>
-          <div class="caixa">
+          <div class="caixa  ${questoes[i].answers[0].isCorrectAnswer}" onclick="verificarResposta(this)">
               <div class="quizz">
                 <img src=${questoes[i].answers[1].image}/>
               </div>
@@ -195,3 +198,7 @@ function inserirQuestoes () {
 } 
 
 pegarTodosQuizz();
+
+function verificarResposta(elemento) {
+  console.log(elemento)
+}
