@@ -221,4 +221,10 @@ function ScrollTela() {
   console.log(document.querySelector(`#container${posicaoContainer-1}`))
 }
 
+function inserirTelaFinal() {
+  let questoes = quizzesSelecionados[idElemento].levels;
+  console.log(questoes)
+
+}
+
 pegarTodosQuizz();

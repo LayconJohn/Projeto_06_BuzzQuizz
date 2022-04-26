@@ -7,7 +7,12 @@ let URLresp1;
 let respIncorreta2;
 let URLresp2;
 let pergunta;
-
+let quizzCriado = {
+    id: 'id',
+    image: 'imagem',
+    levels: 'array levels',
+    questions: 'array questions'
+}
 
 let analise = []
 
