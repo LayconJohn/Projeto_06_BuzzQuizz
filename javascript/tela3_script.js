@@ -6,6 +6,8 @@ let respIncorreta;
 let URLresp1;
 let respIncorreta2;
 let URLresp2;
+let pergunta;
+
 
 let analise = []
 
@@ -34,7 +36,7 @@ function InserirTela3 (){
             <div id="bug" class="container">
             
             </div>
-    <div onclick="SelecionarElemento(this)"class="botao marginb"> <div class="next">Prosseguir pra criar níveis</div></div>
+    <div onclick="validadeFinal()" class="botao marginb"> <div class="next">Prosseguir pra criar níveis</div></div>
             </div>
         </div>
         <!-- PARTE 2 -->
@@ -57,8 +59,8 @@ InserirTela3 ()
 function validacaoTela1(){
     let title = document.querySelector(".titleQuizz").value
     let url = document.querySelector(".URLQuizz").value
-    let perg = document.querySelector(".pergQuizz").value
-    let nivel = document.querySelector(".nivelQuizz").value    
+    let nivel = document.querySelector(".nivelQuizz").value
+    pergunta = document.querySelector(".pergQuizz").value    
     //variavel de padrao da url utilizando Expressões Regulares
     const padrao = /^https?:\/\/.+\/.+$/
     //variavel de padrao da url utilizando Expressões Regulares
@@ -69,7 +71,7 @@ function validacaoTela1(){
     //Arrays de preenchimento dos níveis e perguntas
 
     //validação do titulo
-    if((title.length >= 20 && title.length <= 65) && (padrao.test(url) == true) && perg >= 3 && nivel >= 2){
+    if((title.length >= 20 && title.length <= 65) && (padrao.test(url) == true) && pergunta >= 3 && nivel >= 2){
         const quest1 = document.querySelector("#começo")
         quest1.classList.add("oculto")
         const quest2 = document.querySelector("#perguntas")
@@ -82,10 +84,10 @@ function validacaoTela1(){
 }
 
 function MostrarPerguntas(){
-    let perg = document.querySelector(".pergQuizz").value
+    pergunta = document.querySelector(".pergQuizz").value
     
 const coletor = document.querySelector("#bug")
-for (let i = 1; i <= perg; i++){
+for (let i = 1; i <= pergunta; i++){
             
             coletor.innerHTML += `           
             <div class="topicos margint">Pergunta ${i} <img class="icon"src="imagens/edit.svg"></div>
@@ -103,100 +105,208 @@ for (let i = 1; i <= perg; i++){
                 </div>`
         
             analise.push(coletor.innerHTML)
-            console.log(analise)
-}
-            }
             
-// function validacaoTela2(){
-//      titlePerg = document.querySelector(".titlePergunta").value
-//      corFundo = document.querySelector(".corFundo").value
-//      respCorreta = document.querySelector(".respCorreta").value
-//      URLresp = document.querySelector(".URLresp").value
-//      respIncorreta = document.querySelector(".respIncorreta").value
-//      URLresp1 = document.querySelector(".URLresp1").value
-//      respIncorreta2 = document.querySelector(".respIncorreta2").value
-//      URLresp2 = document.querySelector(".URLresp2").value
+}
+    console.log(analise)
+            }
+
+
+ function validarTitulo(){
+          titlePerg = document.querySelectorAll(".titlePergunta");
+         for (let i = 0; i < pergunta; i++){
+         if( titlePerg[i].value.length >= 20){
+             return true
+           } else {
+            return false
+          }
+      }
+    }
+
+function validarCor(){
+    corFundo = document.querySelectorAll(".corFundo");
+       for (let i = 0; i < pergunta; i++){
+       if( padraoCor.test(corFundo[i].value) == true){
+           return true
+         } else {
+          return false
+        }
+    }
+  }
+
+  function validarCorreta(){
+    respCorreta = document.querySelectorAll(".respCorreta");
+    for (let i = 0; i < pergunta; i++){
+        if( respCorreta[i].value !== ""){
+            return true
+          } else {
+           return false
+         }
+     }
+  }
+
+  function validarURL(){
+    URLresp = document.querySelectorAll(".URLresp");
+    for (let i = 0; i < pergunta; i++){
+        if( padraoURL.test(URLresp[i].value) == true){
+            return true
+          } else {
+           return false
+         }
+     }
+  }
+
+  function validarIncorreta(){
+    respIncorreta = document.querySelectorAll(".respIncorreta")
+    for (let i = 0; i < pergunta; i++){
+        if( respIncorreta[i].value !== ""){
+            return true
+          } else {
+           return false
+         }
+     }
+  }
+
+  function validarURLresp1(){
+    URLresp1 = document.querySelectorAll(".URLresp1");
+    for (let i = 0; i < pergunta; i++){
+        if( padraoURL.test(URLresp1[i].value) == true){
+            return true
+          } else {
+           return false
+         }
+     }
+  }
+
+  function validarIncorreta2(){
+    respIncorreta2 = document.querySelectorAll(".respIncorreta2")
+    for (let i = 0; i < pergunta; i++){
+        if( respIncorreta2[i].value !== ""){
+            return true
+          } else {
+           return false
+         }
+     }
+  }
+
+  function validarURLresp2(){
+    URLresp2 = document.querySelectorAll(".URLresp2");
+    for (let i = 0; i < pergunta; i++){
+        if( padraoURL.test(URLresp2[i].value) == true){
+            return true
+          } else {
+           return false
+         }
+     }
+  }
+
+  function validadeFinal(){
+      if(validarTitulo() == true && validarCor() == true && validarCorreta() && validarURL() && (validarIncorreta() && validarURLresp1()) || (validarIncorreta2() && validarURLresp2())){
+          alert("VENCEMOS")
+      } else {
+          alert("LUCHA")
+      }
+  }
+
+
+
+ 
+
+
+
+            
+
+     
+
+
+//  function validacaoTela2(){
+    //   titlePerg = document.querySelector(".titlePergunta")
+    //   corFundo = document.querySelector(".corFundo")
+    //   respCorreta = document.querySelector(".respCorreta")
+    //   URLresp = document.querySelector(".URLresp")
+    // respIncorreta = document.querySelector(".respIncorreta")
+    //    URLresp1 = document.querySelector(".URLresp1")
+    //   respIncorreta2 = document.querySelector(".respIncorreta2")
+    //    URLresp2 = document.querySelector(".URLresp2")
 
     
 
 
-//     if(titlePerg.length >= 20 && (padraoCor.test(corFundo) == true) && respCorreta !== ""  && (padraoURL.test(URLresp) == true) && (respIncorreta !== "" && padraoURL.test(URLresp1) == true ) || (respIncorreta2 !== "" && padraoURL.test(URLresp2) == true)){
-//         return true
-//     }else{
-//         return false
-//     }
-// }
+//      if(titlePerg.value.length >= 20 && (padraoCor.test(corFundo.value) == true) && respCorreta.value !== ""  && (padraoURL.test(URLresp.value) == true) && (respIncorreta.value !== "" && padraoURL.test(URLresp1.value) == true ) || (respIncorreta2.value !== "" && padraoURL.test(URLresp2.value) == true)){
+//          alert("ACERTOU")
+//      }else{
+//          alert("ERROU")
+//      }
+//  }
 
-function selecionarElemento(elemento){
-        
-    if (elemento == `<input onclick="selecionarElemento(this)" class="titlePergunta marginb" placeholder="Texto da pergunta"></input>`) {
-        titlePerg = document.querySelector(".titlePergunta").value
-        if(titlePerg.length >= 20){
-            console.log("titulo certo")
-        } else {
-            console.log("titulo errado")
-        }
-    }
-    if (elemento == `<input onclick="selecionarElemento(this)" class="corFundo" placeholder="Cor de fundo da pergunta"></input>`){
-        corFundo = document.querySelector(".corFundo").value
-        if(padraoCor.test(corFundo) == true){
-            console.log("cor certo")
-        } else {
-            console.log("cor errado")
-        }
-    }
-    if (elemento == `<input onclick="selecionarElemento(this)" class="respCorreta marginb" placeholder="Resposta correta"></input>`){
-        respCorreta = document.querySelector(".respCorreta").value
-        if(respCorreta !== ""){
-            console.log("resposta certa")
-        } else {
-            console.log("resposta vazia")
-        }
-    }
-    if (elemento == `<input onclick="selecionarElemento(this)" class="URLresp" placeholder="URL da imagem"></input>`){
-        URLresp = document.querySelector(".URLresp")
-        if (padraoURL.test(URLresp) == true){
-            console.log("url certo")
-        } else {
-                console.log("url errado")
-        }   
-    }
-    if (elemento == `<input onclick="selecionarElemento(this)" class="respIncorreta marginb" placeholder="Resposta incorreta 1"></input>`){
-        respIncorreta = document.querySelector(".respIncorreta").value
-        if (respIncorreta !== ""){
-            console.log("Incorreta preenchida")
-        } else {
-            console.log("Incorreta Vazia")
-        }
 
-    }
-    if (elemento == `<input onclick="selecionarElemento(this)" class="URLresp1 marginb " placeholder="URL da imagem 1"></input>`){
-        URLresp1 = document.querySelector(".URLresp1").value
-        if (padraoURL.test(URLresp1) == true){
-            console.log("url resposta certo")
-        } else {
-            console.log("url resposta incorreta")
-        }
-    }
-    if (elemento == `<input onclick="selecionarElemento(this)" class="respIncorreta2 marginb margint" placeholder="Resposta incorreta 2"></input>`){
-        respIncorreta2 = document.querySelector(".respIncorreta2").value
-        if (respIncorreta2 !== ""){
-            console.log("Incorreta 2 preenchida")
-        } else {
-            console.log("Incorreta 2 Vazia")
-        }
-    }
-    if (elemento == `<input  onclick="selecionarElemento(this)" class="URLresp2 marginb" placeholder="URL da imagem 2"></input>`){
-        URLresp2 = document.querySelector(".URLresp2").value
-        if (padraoURL.test(URLresp2) == true){
-            console.log("url resposta 2 certo")
-        } else {
-            console.log("url resposta 2 incorreta")
-        } 
-    }
-}
 
-function Check(){
-    selecionarElemento ()
-}
+//  function selecionarElemento(elemento){
+//      console.log(elemento)
+//      if (elemento === `<input onclick="selecionarElemento(this)" class="titlePergunta marginb" placeholder="Texto da pergunta">`) {
+//          titlePerg = document.querySelector(".titlePergunta")
+//          if(titlePerg.value.length >= 20){
+//              console.log("titulo certo")
+//          } else {
+//              console.log("titulo errado")
+//          }
+//      } else {
+//          console.log("não rolou")
+//      }
+//      if (elemento == `<input onclick="selecionarElemento(this)" class="corFundo" placeholder="Cor de fundo da pergunta"></input>`){
+//          corFundo = document.querySelector(".corFundo")
+//          if(padraoCor.test(corFundo.value) == true){
+//              console.log("cor certo")
+//          } else {
+//              console.log("cor errado")
+//          }
+//      }
+//      if (elemento == `<input onclick="selecionarElemento(this)" class="respCorreta marginb" placeholder="Resposta correta"></input>`){
+//          respCorreta = document.querySelector(".respCorreta")
+//          if(respCorreta.value !== ""){
+//              console.log("resposta certa")
+//          } else {
+//              console.log("resposta vazia")
+//          }
+//      }
+//      if (elemento == `<input onclick="selecionarElemento(this)" class="URLresp" placeholder="URL da imagem"></input>`){
+//          URLresp = document.querySelector(".URLresp")
+//          if (padraoURL.test(URLresp.value) == true){
+//              console.log("url certo")
+//          } else {
+//                  console.log("url errado")
+//          }   
+//      }
+//      if (elemento == `<input onclick="selecionarElemento(this)" class="respIncorreta marginb" placeholder="Resposta incorreta 1"></input>`){
+//          respIncorreta = document.querySelector(".respIncorreta")
+//          if (respIncorreta.value !== ""){
+//              console.log("Incorreta preenchida")
+//          } else {
+//              console.log("Incorreta Vazia")
+//          }
 
+//      }
+//      if (elemento == `<input onclick="selecionarElemento(this)" class="URLresp1 marginb " placeholder="URL da imagem 1"></input>`){
+//          URLresp1 = document.querySelector(".URLresp1")
+//          if (padraoURL.test(URLresp1.value) == true){
+//              console.log("url resposta certo")
+//          } else {
+//              console.log("url resposta incorreta")
+//          }
+//      }
+//      if (elemento == `<input onclick="selecionarElemento(this)" class="respIncorreta2 marginb margint" placeholder="Resposta incorreta 2"></input>`){
+//          respIncorreta2 = document.querySelector(".respIncorreta2")
+//          if (respIncorreta2.value !== ""){
+//              console.log("Incorreta 2 preenchida")
+//          } else {
+//              console.log("Incorreta 2 Vazia")
+//          }
+//      }
+//      if (elemento == `<input  onclick="selecionarElemento(this)" class="URLresp2 marginb" placeholder="URL da imagem 2"></input>`){
+//          URLresp2 = document.querySelector(".URLresp2")
+//          if (padraoURL.test(URLresp2.value) == true){
+//              console.log("url resposta 2 certo")
+//          } else {
+//              console.log("url resposta 2 incorreta")
+//          } 
+//      }
+// 
