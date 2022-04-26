@@ -7,6 +7,20 @@ let URLresp1;
 let respIncorreta2;
 let URLresp2;
 let pergunta;
+let quizzCriado = {
+    id: 'id',
+    image: 'imagem',
+    levels: 'array levels',
+    questions: 'array questions'
+}
+let nivel;
+let titleNivel;
+let PorcentagemAcerto;
+let URLnivel;
+let Descri;
+let url;
+let title;
+
 
 
 let analise = []
@@ -42,11 +56,19 @@ function InserirTela3 (){
         <!-- PARTE 2 -->
 
         <!-- PARTE 3 -->
-        <div class="questionario tres oculto"> 
-            <h1>Seu quizz está pronto!</h1>
-            <div class="imagens"><img src="imagens/hp.png"><figcaption>quão Potterhead é você?</figcaption></div>
-            <div class="botao marginb margint"> <div class="next">Acessar Quizz</div></div>
-            <h2>Voltar pra o home</h2>
+<div id="niveis" class="questionario oculto">
+            <h1>Agora, decida os níveis</h1>
+            <div id="level" class="container">
+            
+            </div>
+    <div onclick="validarNIVEIS()" class="botao marginb margint"> <div class="next">Finalizar Quizz</div></div>
+            </div>
+        </div>
+        <!-- PARTE 3 -->
+
+        <!-- PARTE 4 -->
+        <div id="finalizado" class="questionario tres oculto"> 
+            
         </div>
         <!-- PARTE 3 -->`
         
@@ -57,8 +79,8 @@ InserirTela3 ()
 
 
 function validacaoTela1(){
-    let title = document.querySelector(".titleQuizz").value
-    let url = document.querySelector(".URLQuizz").value
+    title = document.querySelector(".titleQuizz").value
+    url = document.querySelector(".URLQuizz").value
     let nivel = document.querySelector(".nivelQuizz").value
     pergunta = document.querySelector(".pergQuizz").value    
     //variavel de padrao da url utilizando Expressões Regulares
@@ -201,104 +223,109 @@ function validarCor(){
 
   function validadeFinal(){
       if(validarTitulo() == true && validarCor() == true && validarCorreta() && validarURL() && (validarIncorreta() && validarURLresp1()) || (validarIncorreta2() && validarURLresp2())){
-          alert("VENCEMOS")
+        const quest2 = document.querySelector("#perguntas")
+        quest2.classList.add("oculto")
+        const quest3 = document.querySelector("#niveis")
+        quest3.classList.remove("oculto")
+        MostrarNiveis()
       } else {
-          alert("LUCHA")
+          alert("Preencher dados corretamente")
       }
+  }
+
+  function MostrarNiveis(){
+    nivel = document.querySelector(".nivelQuizz").value
+    const coletor = document.querySelector("#level")
+    for (let i = 1; i <= nivel; i++){
+            
+      coletor.innerHTML += `           
+      <div class="topicos margint">Nível ${i} <img class="icon"src="imagens/edit.svg"></div>
+      <div class="caixona">
+          <input onclick="selecionarElementoNivel(this)" class="titleNivel marginb" placeholder="Texto da pergunta"></input>
+          <input onclick="selecionarElementoNivel(this)" class="PorcentagemAcerto marginb" placeholder="% de acerto mínima"></input>
+          <input onclick="selecionarElementoNivel(this)" class="URLnivel marginb" placeholder="URL da imagem do nível"></input>
+          <input onclick="selecionarElementoNivel(this)" class="Descri marginb" placeholder="Descrição do nível"></input>
+          </div>`
+  
+      
+      
+}
+  }
+
+  function validarTituloNivel(){
+    titleNivel = document.querySelectorAll(".titleNivel");
+   for (let i = 0; i < nivel; i++){
+   if( titlePerg[i].value.length >= 10){
+       return true
+     } else {
+      return false
+    }
+}
+}
+
+function validarPorcentagem(){
+  PorcentagemAcerto = document.querySelectorAll(".PorcentagemAcerto");
+  for (let i = 0; i < nivel; i++){
+    if( PorcentagemAcerto[i].value >= 0 && PorcentagemAcerto[i].value <= 100){
+        return true
+      } else {
+       return false
+     }
+ }
+}
+
+function validarURLnivel(){
+  URLnivel = document.querySelectorAll(".URLnivel");
+  for (let i = 0; i < nivel; i++){
+      if( padraoURL.test(URLnivel[i].value) == true){
+          return true
+        } else {
+         return false
+       }
+   }
+}
+
+function validarDescri(){
+  Descri = document.querySelectorAll(".Descri");
+ for (let i = 0; i < nivel; i++){
+ if( titlePerg[i].value.length >= 30){
+     return true
+   } else {
+    return false
+  }
+}
+}
+
+function validarNIVEIS(){
+  if(validarTituloNivel() === true && validarPorcentagem() === true  && validarURLnivel() === true  && validarDescri()=== true ){
+        const quest3 = document.querySelector("#niveis")
+        quest3.classList.add("oculto")
+        const quest4 = document.querySelector("#finalizado")
+        quest4.classList.remove("oculto")
+        MostrarFinalizado()
+      } else {
+          alert("Preencher dados corretamente")
+      }
+  } 
+
+  function MostrarFinalizado(){
+    const coletor = document.querySelector("#finalizado")
+    coletor.innerHTML = `<h1>Seu quizz está pronto!</h1>
+    <div class="imagens"><img class="rebelde"src="${url}"><figcaption>${title}</figcaption></div>
+    <div onclick="inserirMeuQuiz()"class="botao marginb margint"> <div class="next">Acessar Quizz</div></div>
+    <h2 onclick="Home()">Voltar pra o home</h2>`
+  }
+
+  function Home(){
+    tela3.classList.add("oculto");
+    tela1.classList.remove("oculto");
+    
   }
 
 
 
 
-//  function validacaoTela2(){
-    //   titlePerg = document.querySelector(".titlePergunta")
-    //   corFundo = document.querySelector(".corFundo")
-    //   respCorreta = document.querySelector(".respCorreta")
-    //   URLresp = document.querySelector(".URLresp")
-    // respIncorreta = document.querySelector(".respIncorreta")
-    //    URLresp1 = document.querySelector(".URLresp1")
-    //   respIncorreta2 = document.querySelector(".respIncorreta2")
-    //    URLresp2 = document.querySelector(".URLresp2")
-
-    
-
-
-//      if(titlePerg.value.length >= 20 && (padraoCor.test(corFundo.value) == true) && respCorreta.value !== ""  && (padraoURL.test(URLresp.value) == true) && (respIncorreta.value !== "" && padraoURL.test(URLresp1.value) == true ) || (respIncorreta2.value !== "" && padraoURL.test(URLresp2.value) == true)){
-//          alert("ACERTOU")
-//      }else{
-//          alert("ERROU")
-//      }
-//  }
 
 
 
-//  function selecionarElemento(elemento){
-//      console.log(elemento)
-//      if (elemento === `<input onclick="selecionarElemento(this)" class="titlePergunta marginb" placeholder="Texto da pergunta">`) {
-//          titlePerg = document.querySelector(".titlePergunta")
-//          if(titlePerg.value.length >= 20){
-//              console.log("titulo certo")
-//          } else {
-//              console.log("titulo errado")
-//          }
-//      } else {
-//          console.log("não rolou")
-//      }
-//      if (elemento == `<input onclick="selecionarElemento(this)" class="corFundo" placeholder="Cor de fundo da pergunta"></input>`){
-//          corFundo = document.querySelector(".corFundo")
-//          if(padraoCor.test(corFundo.value) == true){
-//              console.log("cor certo")
-//          } else {
-//              console.log("cor errado")
-//          }
-//      }
-//      if (elemento == `<input onclick="selecionarElemento(this)" class="respCorreta marginb" placeholder="Resposta correta"></input>`){
-//          respCorreta = document.querySelector(".respCorreta")
-//          if(respCorreta.value !== ""){
-//              console.log("resposta certa")
-//          } else {
-//              console.log("resposta vazia")
-//          }
-//      }
-//      if (elemento == `<input onclick="selecionarElemento(this)" class="URLresp" placeholder="URL da imagem"></input>`){
-//          URLresp = document.querySelector(".URLresp")
-//          if (padraoURL.test(URLresp.value) == true){
-//              console.log("url certo")
-//          } else {
-//                  console.log("url errado")
-//          }   
-//      }
-//      if (elemento == `<input onclick="selecionarElemento(this)" class="respIncorreta marginb" placeholder="Resposta incorreta 1"></input>`){
-//          respIncorreta = document.querySelector(".respIncorreta")
-//          if (respIncorreta.value !== ""){
-//              console.log("Incorreta preenchida")
-//          } else {
-//              console.log("Incorreta Vazia")
-//          }
-
-//      }
-//      if (elemento == `<input onclick="selecionarElemento(this)" class="URLresp1 marginb " placeholder="URL da imagem 1"></input>`){
-//          URLresp1 = document.querySelector(".URLresp1")
-//          if (padraoURL.test(URLresp1.value) == true){
-//              console.log("url resposta certo")
-//          } else {
-//              console.log("url resposta incorreta")
-//          }
-//      }
-//      if (elemento == `<input onclick="selecionarElemento(this)" class="respIncorreta2 marginb margint" placeholder="Resposta incorreta 2"></input>`){
-//          respIncorreta2 = document.querySelector(".respIncorreta2")
-//          if (respIncorreta2.value !== ""){
-//              console.log("Incorreta 2 preenchida")
-//          } else {
-//              console.log("Incorreta 2 Vazia")
-//          }
-//      }
-//      if (elemento == `<input  onclick="selecionarElemento(this)" class="URLresp2 marginb" placeholder="URL da imagem 2"></input>`){
-//          URLresp2 = document.querySelector(".URLresp2")
-//          if (padraoURL.test(URLresp2.value) == true){
-//              console.log("url resposta 2 certo")
-//          } else {
-//              console.log("url resposta 2 incorreta")
-//          } 
-//      }
 // 
