@@ -12,13 +12,17 @@ let idQuizz;
 let levelQuizz;
 let questionsQuizz;
 let idElemento;
-let quizzUsuario = JSON.parse(localStorage.getItem(""));
+let quizzUsuario = [] // JSON.parse(localStorage.getItem(""));
 let acertos = 0;
 
 function renderizarMensagemTela1() {
-  inserirTela1();
-  inserirMeuQuiz();
-  inserirTodosQuizz();
+  const promise = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes");
+  promise.then(function(response){
+    quizzGeral = response.data;
+    inserirTela1();
+    inserirMeuQuiz();
+    inserirTodosQuizz();
+  });
 }
 
 function inserirTela1() {
@@ -87,7 +91,7 @@ function inserirTodosQuizz() {
         questionsQuizz = quizzGeral[i].questions;
   
         cardQuizzes.innerHTML += `
-        <div class="tela1-quizz ${idQuizz}" onclick="selecionarQuizz(this)" id="${i}">
+        <div class="tela1-quizz ${idQuizz}" onclick="selecionarQuizz(this)" id="${idQuizz}">
           <img
             src=${imagemURL}
             alt=""
@@ -105,15 +109,6 @@ function inserirTodosQuizz() {
 function criarBotao() {
   tela1.classList.add("oculto");
   tela3.classList.remove("oculto");
-}
-
-function selecionarQuizz(quizz) {
-  tela1.classList.add("oculto");
-  tela2.classList.remove("oculto");
-  idElemento = quizz.id
-  console.log(quizzesSelecionados[idElemento])
-  inserirTituloTela2();
-  inserirQuestoes();
 }
 
 function pegarTodosQuizz() {
