@@ -3,6 +3,7 @@ const meuQuiz = document.querySelector(".meu-quizz");
 const tela1 = document.querySelector(".tela1");
 const tela2 = document.querySelector(".tela2");
 const tela3 = document.querySelector(".tela3");
+const TEMPO_2S = 2;
 let quizzGeral = [];
 let quizzesSelecionados = [];
 let titulo;
@@ -12,6 +13,7 @@ let levelQuizz;
 let questionsQuizz;
 let idElemento;
 let quizzUsuario = JSON.parse(localStorage.getItem(""));
+let acertos = 0;
 
 function renderizarMensagemTela1() {
   inserirTela1();
@@ -159,9 +161,10 @@ function inserirTituloTela2() {
 function inserirQuestoes () {
   let questoes = quizzesSelecionados[idElemento].questions;
   for (let i = 0; i < questoes.length; i++) {
-    let listaRespostas = shuffle(questoes[i].answers);
+    //let listaRespostas = shuffle(questoes[i].answers);
+    let listaRespostas = questoes[i].answers;
     document.querySelector(".pagina").innerHTML += `
-    <div class="tela2-container">
+    <div class="tela2-container" id ="container${i}">
       <div class="cabecalho">
           <p class="estilo1">${questoes[i].title}</p>
       </div>
@@ -172,7 +175,7 @@ function inserirQuestoes () {
             </div>
               <p class="estilo2">${listaRespostas[0].text}</p>
           </div>
-          <div class="caixa  ${questoes[i].answers[0].isCorrectAnswer}" onclick="verificarResposta(this)">
+          <div class="caixa  ${questoes[i].answers[1].isCorrectAnswer}" onclick="verificarResposta(this)">
               <div class="quizz">
                 <img src=${listaRespostas[1].image}/>
               </div>
@@ -180,16 +183,13 @@ function inserirQuestoes () {
           </div>
       </div>
       <div class="quizzes">
-          <div class="caixa ${questoes[i].answers[0].isCorrectAnswer}" onclick="verificarResposta(this)">
-              <div class="quizz ">
-                <img src=${questoes[i].answers[0].image}/>
-          <div class="caixa margem">
-              <div class="quizz">
-                <img src=${listaRespostas[0].image}/>
-              </div>
+          <div class="caixa  ${questoes[i].answers[0].isCorrectAnswer}" onclick="verificarResposta(this)">
+            <div class="quizz">
+              <img src=${listaRespostas[0].image}/>
+            </div>
               <p class="estilo2">${listaRespostas[0].text}</p>
           </div>
-          <div class="caixa  ${questoes[i].answers[0].isCorrectAnswer}" onclick="verificarResposta(this)">
+          <div class="caixa  ${questoes[i].answers[1].isCorrectAnswer}" onclick="verificarResposta(this)">
               <div class="quizz">
                 <img src=${listaRespostas[1].image}/>
               </div>
@@ -204,6 +204,15 @@ function inserirQuestoes () {
 pegarTodosQuizz();
 
 function verificarResposta(elemento) {
-  console.log(elemento)
+  let elementoclicado = elemento
+  if (elementoclicado.classList.contains("true")) {
+    acertos += 1;
+  }
+  console.log(acertos)
+  setTimeout(function () {
+    document.querySelector('#container1').scrollIntoView()},
+     TEMPO_2S * 1000)
+  //Aplicar dentro de um for
 }
+
 pegarTodosQuizz();

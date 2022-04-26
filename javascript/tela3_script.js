@@ -34,7 +34,7 @@ function InserirTela3 (){
             <div id="bug" class="container">
             
             </div>
-    <div onclick="SelecionarElemento(this)"class="botao marginb"> <div class="next">Prosseguir pra criar níveis</div></div>
+    <div onclick="selecionarElemento(this)"class="botao marginb"> <div class="next">Prosseguir pra criar níveis</div></div>
             </div>
         </div>
         <!-- PARTE 2 -->
@@ -193,6 +193,8 @@ function selecionarElemento(elemento){
         } else {
             console.log("url resposta 2 incorreta")
         } 
+
+
     }
 }
 
@@ -213,6 +215,7 @@ function selecionarElemento(elemento){
 function testeFinal(){
     
  console.log(analise.every())
+}
 
 function Check(){
     selecionarElemento ()
