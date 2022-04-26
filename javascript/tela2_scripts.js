@@ -155,7 +155,11 @@ function verificarResposta(elemento) {
   }
 
   function reniciarQuizz() {
-    window.location.reload()
+    window.location.reload();
+    tela1.classList.add("oculto");
+    tela2.classList.remove("oculto");
+    inserirTituloTela2();
+    inserirQuestoes();
   }
 
   function voltarHome() {
