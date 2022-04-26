@@ -3,6 +3,7 @@ const meuQuiz = document.querySelector(".meu-quizz");
 const tela1 = document.querySelector(".tela1");
 const tela2 = document.querySelector(".tela2");
 const tela3 = document.querySelector(".tela3");
+const TEMPO_2S = 2;
 let quizzGeral = [];
 let quizzesSelecionados = [];
 let titulo;
@@ -11,16 +12,24 @@ let idQuizz;
 let levelQuizz;
 let questionsQuizz;
 let idElemento;
-let quizzUsuario = JSON.parse(localStorage.getItem(""));
+let quizzUsuario = [] // JSON.parse(localStorage.getItem(""));
+let acertos = 0;
 
 function renderizarMensagemTela1() {
-  inserirTela1();
-  inserirMeuQuiz();
-  inserirTodosQuizz();
+  const promise = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes");
+  promise.then(function(response){
+    quizzGeral = response.data;
+    inserirTela1();
+    inserirMeuQuiz();
+    inserirTodosQuizz();
+  });
 }
 
 function inserirTela1() {
   document.querySelector(".tela1").innerHTML += `
+  <header class="topo">
+    <h1>BuzzQuiz</h1>
+  </header>
     <main>
       <section class="meu-quizz">
 
@@ -73,7 +82,8 @@ function inserirTodosQuizz() {
     cardQuizzes.innerHTML = ``;      
     
     for (let i = 0; i < 6; i ++) {
-      if(quizzUsuario.indexOf(quizzGeral[i].id) === -1){
+      //quizzUsuario.indexOf(quizzGeral[i].id) === -1
+      if(true){
         titulo = quizzGeral[i].title;
         imagemURL = quizzGeral[i].image;
         idQuizz = quizzGeral[i].id;
@@ -81,7 +91,7 @@ function inserirTodosQuizz() {
         questionsQuizz = quizzGeral[i].questions;
   
         cardQuizzes.innerHTML += `
-        <div class="tela1-quizz ${idQuizz}" onclick="selecionarQuizz(this)" id="${i}">
+        <div class="tela1-quizz ${idQuizz}" onclick="selecionarQuizz(this)" id="${idQuizz}">
           <img
             src=${imagemURL}
             alt=""
@@ -99,15 +109,6 @@ function inserirTodosQuizz() {
 function criarBotao() {
   tela1.classList.add("oculto");
   tela3.classList.remove("oculto");
-}
-
-function selecionarQuizz(quizz) {
-  tela1.classList.add("oculto");
-  tela2.classList.remove("oculto");
-  idElemento = quizz.id
-  console.log(quizzesSelecionados[idElemento])
-  inserirTituloTela2();
-  inserirQuestoes();
 }
 
 function pegarTodosQuizz() {
@@ -128,70 +129,5 @@ function tratarErro() {
 function armazenarQuizz() {
   quizzesSelecionados.push({id: idQuizz, titulo: titulo, imagem: imagemURL, questions: questionsQuizz, levels: levelQuizz})
 }
-
-function inserirTituloTela2() {
-  document.querySelector(".tela2").innerHTML = "";
-
-  document.querySelector(".tela2").innerHTML += `
-  <div class="topbar">
-    <h1 class="tela2-h1">BuzzQuizz</h1>
-  </div>
-  <div class="banner">
-      <div class="titulo">
-          <h3>${quizzesSelecionados[idElemento].titulo}</h3>
-      </div>
-      <img
-          src=${quizzesSelecionados[idElemento].imagem}
-          alt=""
-      />
-  </div>
-
-  <div class="pagina">
-  
-  </div>
-  `
-}
-
-function inserirQuestoes () {
-  let questoes = quizzesSelecionados[idElemento].questions;
-  for (let i = 0; i < questoes.length; i++) {
-    let listaRespostas = shuffle(questoes[i].answers);
-    document.querySelector(".pagina").innerHTML += `
-    <div class="tela2-container">
-      <div class="cabecalho">
-          <p class="estilo1">${questoes[i].title}</p>
-      </div>
-      <div class="quizzes">
-          <div class="caixa margem">
-            <div class="quizz">
-              <img src=${listaRespostas[0].image}/>
-            </div>
-              <p class="estilo2">${listaRespostas[0].text}</p>
-          </div>
-          <div class="caixa">
-              <div class="quizz">
-                <img src=${listaRespostas[1].image}/>
-              </div>
-              <p class="estilo2">${listaRespostas[1].text}</p>
-          </div>
-      </div>
-      <div class="quizzes">
-          <div class="caixa margem">
-              <div class="quizz">
-                <img src=${listaRespostas[0].image}/>
-              </div>
-              <p class="estilo2">${listaRespostas[0].text}</p>
-          </div>
-          <div class="caixa">
-              <div class="quizz">
-                <img src=${listaRespostas[1].image}/>
-              </div>
-              <p class="estilo2">${listaRespostas[1].text}</p>
-          </div>
-      </div>
-    </div>
-    `
-  }
-} 
 
 pegarTodosQuizz();

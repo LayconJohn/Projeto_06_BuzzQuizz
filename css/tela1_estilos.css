@@ -12,7 +12,7 @@ body {
 }
 
 /* Topo */
-.topo {
+header {
   width: 100%;
   height: 69px;
   background-color: #ec362d;
@@ -30,6 +30,7 @@ body {
   font-size: 37px;
   color: #ffffff;
   font-weight: bold;
+  
 }
 
 /* Conteúdo (main) */
@@ -124,6 +125,7 @@ section {
 
 .tela1-quizzes { 
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   padding-bottom: 100px;
 }
@@ -175,6 +177,15 @@ section {
 
   .todos-quizz {
     width: 100%;
+    padding: 0 auto;
+  }
+
+  .todos-quizz h3 {
+    text-align: center;
+  }
+
+  .tela1-quizzes { 
+    justify-content: center;
   }
 }
 

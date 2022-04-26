@@ -114,7 +114,16 @@ h3 {
 }
 
 .quizzes {
-display: flex;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0 20px;
+}
+
+.container-quizz {
+    display: flex;
+    flex-direction: column;
 }
 
 .quizz {
@@ -185,16 +194,16 @@ display: flex;
 
 /* estilos imagem/texto selecionados */
 
-.imgnaoselecionada {
+.opacidade {
     opacity: 0.3;
 }
 
-.textocerto {
+.verde {
     color: #009C22;
 }
 
-.textoerrado {
-    color: #009C22;
+.vermelho {
+    color: red;
 }
 
 /* estilos textos */
@@ -210,6 +219,8 @@ display: flex;
     font-weight: 700;
     font-size: 20px;
     line-height: 23px;
+    width: 330.91px;
+    word-wrap: break-word;
 }
 
 .estilo3 {
@@ -228,7 +239,6 @@ display: flex;
 
     .cabecalho{
         width: 340px;
-        margin-left: 18px;
     }
 
     .cabecalho2{
@@ -241,10 +251,15 @@ display: flex;
         margin-left: 18px;
     }
 
+    .quizzes {
+        flex-direction: column;
+    }
+
     .quizz {
         width: 163px;
         height: 113px;
         margin-top: 13px;
+        margin-left: 34px;
     }
 
     .mensagemfinal {
@@ -259,6 +274,7 @@ display: flex;
 
     .estilo2 {
         margin-top: 7px;
+        margin-left: 34px;
         font-weight: 700;
         font-size: 13px;
         line-height: 15px;
