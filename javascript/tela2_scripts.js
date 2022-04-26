@@ -1,6 +1,13 @@
 let quizzSelecionado;
+let elementoclicado;
+let posicaoContainer = 1;
+let questoesRespondidas = 0;
 
 function mostrarRespostas(resposta){
+    if (questoesRespondidas === quizzSelecionado.questions.length) {
+        alert('Tudo respondido')
+    }
+    verificarResposta(resposta)
     console.log(resposta.parentNode);
     resposta.parentNode.querySelector(".certa").classList.add("verde");
     let errada = resposta.parentNode.querySelectorAll(".errada");
@@ -53,7 +60,7 @@ function inserirQuestoes() {
         }
         
         document.querySelector(".pagina").innerHTML += `
-        <div class="tela2-container">
+        <div class="tela2-container" id = "container${i}">
             <div class="cabecalho">
                 <p class="estilo1">${questoes[i].title}</p>
             </div>
@@ -99,5 +106,30 @@ function selecionarQuizz(quizz) {
         inserirQuestoes();
     });
 }
+
+function verificarResposta(elemento) {
+    elementoclicado = elemento;
+     
+    if (elementoclicado.classList.contains("certa")) {
+      acertos += 1;
+    }
+    console.log(acertos)
+
+
+    setTimeout(ScrollTela, TEMPO_2S * 1000)
+  }
+  
+  function ScrollTela() {
+    document.querySelector(`#container${posicaoContainer}`).scrollIntoView()
+    posicaoContainer += 1;
+  
+    console.log(document.querySelector(`#container${posicaoContainer}`))
+  }
+
+  function inserirTelaFinal() {
+    let questoes = quizzesSelecionados[idElemento].levels;
+    console.log(questoes)
+  
+  }
 
 //inserirTela2 ()

@@ -159,7 +159,7 @@ function inserirQuestoes () {
     //let listaRespostas = shuffle(questoes[i].answers);
     let listaRespostas = questoes[i].answers;
     document.querySelector(".pagina").innerHTML += `
-    <div class="tela2-container" id ="container${i}">
+    <div class="tela2-container" >
       <div class="cabecalho">
           <p class="estilo1">${questoes[i].title}</p>
       </div>
@@ -198,28 +198,3 @@ function inserirQuestoes () {
 
 pegarTodosQuizz();
 
-function verificarResposta(elemento) {
-  let elementoclicado = elemento
-   
-  if (elementoclicado.classList.contains("true")) {
-    acertos += 1;
-  }
-  console.log(acertos)
-  setTimeout(ScrollTela, TEMPO_2S * 1000)
-}
-
-function ScrollTela() {
-  let posicaoContainer = 0;
-  document.querySelector(`#container${posicaoContainer}`).scrollIntoView()
-  posicaoContainer += 1;
-
-  console.log(document.querySelector(`#container${posicaoContainer-1}`))
-}
-
-function inserirTelaFinal() {
-  let questoes = quizzesSelecionados[idElemento].levels;
-  console.log(questoes)
-
-}
-
-pegarTodosQuizz();
